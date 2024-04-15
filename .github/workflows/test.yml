@@ -24,7 +24,7 @@ jobs:
     #         This is an issue
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
 
@@ -35,7 +35,7 @@ jobs:
         run: |
 
           # append test to README.md
-          echo "test" >> README.md
+          echo "test read" >> README.md
 
           # Run git commit, push and create pull-request as 'github-actions' user
           git config --local user.name "github-actions"
@@ -43,8 +43,8 @@ jobs:
           # https://api.github.com/users/github-actions%5Bbot%5D
           # https://github.community/t/github-actions-bot-email-address/17204/6
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "testbranch"
+          git checkout -b "testbranch-read"
           git add .
           git commit -m "Test commit"
           git status
-          git push --set-upstream origin "testbranch"
+          git push --set-upstream origin "testbranch-read"
