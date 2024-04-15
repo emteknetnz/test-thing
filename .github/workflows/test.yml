@@ -12,13 +12,40 @@ jobs:
     name: Test job
     runs-on: ubuntu-latest
 
+    # permissions:
+    #   issues: write
+
+    # steps:
+    #   - name: Test step
+    #     uses: silverstripe/gha-issue@v1
+    #     with:
+    #       title: Test issue
+    #       description: |
+    #         This is an issue
+
     permissions:
-      issues: write
+      contents: write
 
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        depth: 0
+
       - name: Test step
-        uses: silverstripe/gha-issue@v1
-        with:
-          title: Test issue
-          description: |
-            This is an issue
+        run: |
+
+          # append test to README.md
+          echo "test" >> README.md
+
+          # Run git commit, push and create pull-request as 'github-actions' user
+          git config --local user.name "github-actions"
+          # The 41898282+ email prefixed is the required, matches the ID here
+          # https://api.github.com/users/github-actions%5Bbot%5D
+          # https://github.community/t/github-actions-bot-email-address/17204/6
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "testbranch"
+          git add .
+          git commit -m "Test commit"
+          git status
+          git push --set-upstream origin "testbranch"
