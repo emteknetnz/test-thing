@@ -23,8 +23,8 @@ jobs:
     #       description: |
     #         This is an issue
 
-    permissions:
-      contents: read
+    # permissions:
+    #   contents: read
 
     steps:
 
