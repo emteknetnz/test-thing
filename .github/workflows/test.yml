@@ -37,14 +37,19 @@ jobs:
           # append test to README.md
           echo "test read" >> README.md
 
-          # Run git commit, push and create pull-request as 'github-actions' user
-          git config --local user.name "github-actions"
-          # The 41898282+ email prefixed is the required, matches the ID here
-          # https://api.github.com/users/github-actions%5Bbot%5D
-          # https://github.community/t/github-actions-bot-email-address/17204/6
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "testbranch-read"
+          # # Run git commit, push and create pull-request as 'github-actions' user
+          # git config --local user.name "github-actions"
+          # # The 41898282+ email prefixed is the required, matches the ID here
+          # # https://api.github.com/users/github-actions%5Bbot%5D
+          # # https://github.community/t/github-actions-bot-email-address/17204/6
+          # git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # git checkout -b "testbranch-read"
+          # git add .
+          # git commit -m "Test commit"
+          # git status
+          # git push --set-upstream origin "testbranch-read"
+
+          # Test raw git commands without pushing
           git add .
-          git commit -m "Test commit"
-          git status
-          git push --set-upstream origin "testbranch-read"
+          git commit -m "Test commit with read permission"
+          git log
