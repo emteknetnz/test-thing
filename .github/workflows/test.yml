@@ -23,8 +23,10 @@ jobs:
       - name: Create tag and release
         uses: silverstripe/gha-tag-release@v1
         with:
-          tag: 1.0.0
+          tag: 1.0.1
+          delete_existing: false
           release: true
+          release_auto_notes: true
 
     # permissions:
     #   issues: write
