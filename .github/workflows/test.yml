@@ -24,9 +24,7 @@ jobs:
         uses: silverstripe/gha-tag-release@v1
         with:
           tag: 1.0.0
-          delete_existing: false
           release: false
-          release_auto_notes: false
 
     # permissions:
     #   issues: write
